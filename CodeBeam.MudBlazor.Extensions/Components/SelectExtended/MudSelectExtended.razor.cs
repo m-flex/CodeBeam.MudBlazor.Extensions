@@ -49,7 +49,10 @@ namespace MudExtensions
         /// </summary>
         protected Dictionary<T, MudSelectItemExtended<T?>> _shadowLookup = new();
         private MudInputExtended<string> _elementReference = new();
-        internal bool _isOpen;
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsOpen;
         /// <summary>
         /// 
         /// </summary>
@@ -847,7 +850,7 @@ namespace MudExtensions
             if (Disabled || ReadOnly)
                 return;
 
-            if (_list != null && _isOpen)
+            if (_list != null && IsOpen)
             {
                 await _list.HandleKeyDown(obj);
             }
@@ -862,7 +865,7 @@ namespace MudExtensions
                     {
                         await CloseMenu();
                     }
-                    else if (!_isOpen)
+                    else if (!IsOpen)
                     {
                         await OpenMenu();
                     }
@@ -872,7 +875,7 @@ namespace MudExtensions
                     {
                         await OpenMenu();
                     }
-                    else if (!_isOpen)
+                    else if (!IsOpen)
                     {
                         await OpenMenu();
                     }
@@ -887,7 +890,7 @@ namespace MudExtensions
                 case "NumpadEnter":
                     if (!MultiSelection)
                     {
-                        if (!_isOpen)
+                        if (!IsOpen)
                         {
                             await OpenMenu();
                         }
@@ -899,7 +902,7 @@ namespace MudExtensions
                     }
                     else
                     {
-                        if (!_isOpen)
+                        if (!IsOpen)
                         {
                             await OpenMenu();
                             break;
@@ -993,7 +996,7 @@ namespace MudExtensions
         {
             if (Disabled || ReadOnly)
                 return;
-            if (_isOpen)
+            if (IsOpen)
                 await CloseMenu();
             else
                 await OpenMenu();
@@ -1007,7 +1010,7 @@ namespace MudExtensions
         {
             if (Disabled || ReadOnly)
                 return;
-            _isOpen = true;
+            IsOpen = true;
             UpdateIcon();
             StateHasChanged();
 
@@ -1022,7 +1025,7 @@ namespace MudExtensions
         /// <returns></returns>
         public async Task CloseMenu()
         {
-            _isOpen = false;
+            IsOpen = false;
             UpdateIcon();
             StateHasChanged();
             //if (focusAgain == true)
@@ -1261,7 +1264,7 @@ namespace MudExtensions
         /// </summary>
         protected void UpdateIcon()
         {
-            _currentIcon = !string.IsNullOrWhiteSpace(AdornmentIcon) ? AdornmentIcon : _isOpen ? CloseIcon : OpenIcon;
+            _currentIcon = !string.IsNullOrWhiteSpace(AdornmentIcon) ? AdornmentIcon : IsOpen ? CloseIcon : OpenIcon;
         }
 
         /// <summary>

@@ -102,7 +102,7 @@
                         </ChildContent>
                     </MudInputExtended>
 
-                    <MudPopover Open="@_isOpen" MaxHeight="@MaxHeight" AnchorOrigin="@AnchorOrigin" TransformOrigin="@TransformOrigin" Class="@PopoverClass" RelativeWidth="@RelativeWidth">
+                    <MudPopover Open="@IsOpen" MaxHeight="@MaxHeight" AnchorOrigin="@AnchorOrigin" TransformOrigin="@TransformOrigin" Class="@PopoverClass" RelativeWidth="@RelativeWidth">
                         @if (StaticContent != null && !ShowStaticContentAtEnd)
                         {
                             @StaticContent(this)
@@ -155,4 +155,4 @@
 
 </CascadingValue>
 <!-- mousedown instead of click needed to close the menu before OnLostFocus runs -->
-<MudOverlay Visible="_isOpen" @onmousedown="@(() => CloseMenu())" LockScroll="@LockScroll" />
+<MudOverlay Visible="IsOpen" @onmousedown="@(() => CloseMenu())" LockScroll="@LockScroll" />
