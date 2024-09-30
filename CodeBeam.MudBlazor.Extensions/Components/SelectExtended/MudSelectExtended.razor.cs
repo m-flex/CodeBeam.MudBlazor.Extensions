@@ -49,9 +49,6 @@ namespace MudExtensions
         /// </summary>
         protected Dictionary<T, MudSelectItemExtended<T?>> _shadowLookup = new();
         private MudInputExtended<string> _elementReference = new();
-        /// <summary>
-        /// 
-        /// </summary>
         internal bool _isOpen;
         /// <summary>
         /// 
